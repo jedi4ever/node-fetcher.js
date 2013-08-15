@@ -23,10 +23,11 @@ downloads the specified version, platform and architecture to filename
 - `version` : (without the v prefix)
 - `architecture` : x86 or x64
 - `platform` : linux, darwin or sunos
+- `filename` : path to save the nodejs binary to
 - `callback` : function that will pass the err or not
 
 ## downloadURL
-    nodeFetcher.downloadURL(version, platform, arch, filename);
+    nodeFetcher.downloadURL(version, platform, arch);
 
 returns the downloadURL for the specified version, platform and architecture to filename
 
