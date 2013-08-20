@@ -6,11 +6,17 @@ var temp = require('temp');
 
 describe('nodeFetcher', function() {
 
-  it('downloadUrl should be correct', function(done) {
+  it('downloadUrl should be correct for a downloadable version', function(done) {
     var url = nodeFetcher.downloadUrl('0.10.3','linux', 'x64');
     expect(url).to.contain.string('nodejs');
     expect(url).to.contain.string('linux');
     expect(url).to.contain.string('v0.10.3');
+    done();
+  });
+
+  it('downloadUrl should be correct for system', function(done) {
+    var url = nodeFetcher.downloadUrl('system','linux', 'x64');
+    expect(url).to.contain.string('file://');
     done();
   });
 
@@ -49,6 +55,34 @@ describe('nodeFetcher', function() {
     temp.open('node-fetcher', function(err, info) {
       var filename = info.path;
       nodeFetcher.download('0.10.3',process.platform,'x86',filename,function(err) {
+        done(err);
+      });
+    });
+  });
+
+  it('should download an latest version for arch x86', function(done) {
+    this.timeout(90000);
+    temp.open('node-fetcher', function(err, info) {
+      var filename = info.path;
+      nodeFetcher.download('latest',process.platform,'x86',filename,function(err) {
+        done(err);
+      });
+    });
+  });
+
+  it('should get the latest version', function(done) {
+    temp.open('node-fetcher', function(err, info) {
+      var filename = info.path;
+      nodeFetcher.latestVersion(function(err,version) {
+        done(err);
+      });
+    });
+  });
+
+  it('should download system version for arch x86', function(done) {
+    temp.open('node-fetcher', function(err, info) {
+      var filename = info.path;
+      nodeFetcher.download('system',process.platform,'x86',filename,function(err) {
         done(err);
       });
     });
