@@ -1,6 +1,6 @@
 {
   "name": "node-fetcher",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "author": "Patrick Debois <patrick.debois@jedi.be>",
   "private": false,
   "scripts": {
