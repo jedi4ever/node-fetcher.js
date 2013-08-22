@@ -4,6 +4,9 @@ var expect = require('chai').expect;
 var nodeFetcher = require('../lib/node-fetcher');
 var temp = require('temp');
 
+var realTimeout = (process.env.TRAVIS || process.env.CIRCLECI) ? 12000 : 9000 ;
+
+
 describe('nodeFetcher', function() {
 
   it('downloadUrl should fail for an incorrect version', function(done) {
@@ -66,7 +69,7 @@ describe('nodeFetcher', function() {
   });
 
   it('should download an existing version for arch x86', function(done) {
-    this.timeout(90000);
+    this.timeout(realTimeout);
     temp.open('node-fetcher', function(err, info) {
       var filename = info.path;
       nodeFetcher.download('0.10.3',process.platform,'x86',filename,function(err) {
@@ -76,7 +79,7 @@ describe('nodeFetcher', function() {
   });
 
   it('should download the latest version for arch x86', function(done) {
-    this.timeout(90000);
+    this.timeout(realTimeout);
     temp.open('node-fetcher', function(err, info) {
       var filename = info.path;
       nodeFetcher.download('latest',process.platform,'x86',filename,function(err) {
@@ -104,7 +107,7 @@ describe('nodeFetcher', function() {
   });
 
   it('should download an existing version for arch x64', function(done) {
-    this.timeout(90000);
+    this.timeout(realTimeout);
     temp.open('node-fetcher', function(err, info) {
       var filename = info.path;
       nodeFetcher.download('0.10.3',process.platform,'x64',filename,function(err) {
