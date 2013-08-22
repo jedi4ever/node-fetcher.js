@@ -4,7 +4,7 @@ var expect = require('chai').expect;
 var nodeFetcher = require('../lib/node-fetcher');
 var temp = require('temp');
 
-var realTimeout = (process.env.TRAVIS || process.env.CIRCLECI) ? 12000 : 9000 ;
+var realTimeout = (process.env.TRAVIS || process.env.CIRCLECI) ? 30000 : 12000 ;
 
 
 describe('nodeFetcher', function() {
