@@ -30,7 +30,7 @@ It currently only supports tgz based downloads. Feel free to add the pkg or exe 
 
 downloads the specified version, platform and architecture to filename
 
-- `version` : latest | system | version(without the v prefix)
+- `version` : latest | system | _version_ (X.Y.Z - without or without the v prefix)
 - `architecture` : x86 or x64
 - `platform` : linux, darwin or sunos
 - `filename` : path to save the nodejs binary to

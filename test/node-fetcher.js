@@ -6,8 +6,23 @@ var temp = require('temp');
 
 describe('nodeFetcher', function() {
 
+  it('downloadUrl should fail for an incorrect version', function(done) {
+    nodeFetcher.download('invalidVersion','linux','x64','dummy',function(err) {
+      expect(err).not.to.equal(null);
+      done();
+    });
+  });
+
   it('downloadUrl should be correct for a downloadable version', function(done) {
     var url = nodeFetcher.downloadUrl('0.10.3','linux', 'x64');
+    expect(url).to.contain.string('nodejs');
+    expect(url).to.contain.string('linux');
+    expect(url).to.contain.string('v0.10.3');
+    done();
+  });
+
+  it('downloadUrl should be correct for a downloadable version with a v', function(done) {
+    var url = nodeFetcher.downloadUrl('v0.10.3','linux', 'x64');
     expect(url).to.contain.string('nodejs');
     expect(url).to.contain.string('linux');
     expect(url).to.contain.string('v0.10.3');
