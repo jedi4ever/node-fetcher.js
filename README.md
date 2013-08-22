@@ -4,6 +4,8 @@ A simple helper to download the nodejs binary from the `http://nodejs.org/dist`
 
 It will download the tgz and extract the nodejs binary from it
 
+[![Build Status](https://travis-ci.org/jedi4ever/node-fetcher.js.png)](https://travis-ci.org/jedi4ever/node-fetcher.js)
+
 # Usage
 
     var nodeFetcher = require('node-fetcher');
