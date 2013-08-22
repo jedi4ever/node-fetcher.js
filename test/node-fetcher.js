@@ -60,7 +60,7 @@ describe('nodeFetcher', function() {
     });
   });
 
-  it('should download an latest version for arch x86', function(done) {
+  it('should download the latest version for arch x86', function(done) {
     this.timeout(90000);
     temp.open('node-fetcher', function(err, info) {
       var filename = info.path;
